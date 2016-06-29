@@ -20,7 +20,7 @@ public class Creator {
 	public static final int MAX_SPEED = 220;
 	public static final int CAPACITY = 15;
 	public static final int YEAR = 2016;
-	public static final int PRICE = 50000;
+	public static final int PRICE = 52000;
 	public static final int ADDITIVE_NOT_RANDOM_ZERO = 1;
 	
 	public Creator(TaxiStation taxiStation, int countCar){
