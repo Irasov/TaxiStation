@@ -22,7 +22,8 @@
         android:layout_width="283dp"
         android:layout_height="0dp"
         android:layout_weight="0.86"
-        android:ems="10" >
+        android:ems="10"
+        android:visibility="invisible" >
 
         <requestFocus />
     </EditText>
