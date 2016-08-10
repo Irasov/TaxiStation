@@ -9,6 +9,12 @@
     tools:context="com.irasov.taxi.MainActivity" 
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TaxiStation" />
+
     <Button
         android:id="@+id/CreateTaxiStation"
         android:layout_width="wrap_content"

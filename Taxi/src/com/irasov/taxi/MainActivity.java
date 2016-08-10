@@ -13,12 +13,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private Button button;
+	private TextView tv;
 	private TaxiStation taxiStation;
 	private EditText showTaxiStation;
 	private static final String TAG = "myLogs";
@@ -27,10 +31,12 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static final int ID_SORT_BY_PRICE = 1;
 	private static final int ID_SORT_BY_YEAR = 2;
 	private static final int ID_EXIT = 3;
+	private static final int ID_ANIM = 4;
 	private static final int ID_CATEGORY = 0;
 	private static final int ID_CATEGORY_EXIT = 1;
 	private static final String TITLE_MENU_SORT_BY_PRICE ="sort by price";
 	private static final String TITLE_MENU_SORT_BY_YEAR ="sort by year";
+	private static final String TITLE_MENU_ANIM ="animation";
 	private static final String MENU_EXIT ="exit";
 	private boolean visibleMenu = false;
 	
@@ -58,8 +64,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		Toast.makeText(this,MESSAGE , Toast.LENGTH_LONG).show();
 		button = (Button)findViewById(R.id.CreateTaxiStation);
 		showTaxiStation = (EditText)findViewById(R.id.showTaxiStation);
+		tv = (TextView)findViewById(R.id.textView1);
 		button.setOnClickListener(this);
 		registerForContextMenu(showTaxiStation);		
+		registerForContextMenu(tv);	
 	}
 
 	
@@ -71,6 +79,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			menu.add(ID_CATEGORY,ID_SORT_BY_PRICE,ID_CATEGORY,TITLE_MENU_SORT_BY_PRICE);
 			menu.add(ID_CATEGORY,ID_SORT_BY_YEAR,ID_CATEGORY,TITLE_MENU_SORT_BY_YEAR);
 			break;
+		case R.id.textView1:
+			menu.add(ID_CATEGORY,ID_ANIM,ID_CATEGORY,TITLE_MENU_ANIM);
 		}
 	}
 
@@ -91,6 +101,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
+		Animation anim = null;
 		switch(item.getItemId()){
 	    case ID_SORT_BY_PRICE:
 	    	showTaxiStation.setText(null);
@@ -105,6 +116,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	    case ID_EXIT:
 	    	finish();
 			break;
+	    case ID_ANIM:
+	    	anim = AnimationUtils.loadAnimation(this, R.anim.mycombo);
+	    	tv.startAnimation(anim);
+	    	break;
 	
 	}
 		return super.onContextItemSelected(item);
