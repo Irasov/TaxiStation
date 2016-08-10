@@ -103,7 +103,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			showTaxiStation.append(taxiStation.toString());
 			break;
 	    case ID_EXIT:
-	    	System.exit(0);
+	    	finish();
 			break;
 	
 	}
